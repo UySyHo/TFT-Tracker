@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+.practice {
+	background-image: url("../images/legend.jpg");
+	height: 500px;
+	object-fit: contain;
+	
+}
+
+* {
+	box-sizing: border-box;
+}
+.search{
+	text-align: center;
+}
+
+.leaderboard {
+	height: 400px;
+}
