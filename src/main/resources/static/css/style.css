@@ -2,18 +2,21 @@
 
 .practice {
 	background-image: url("../images/legend.jpg");
-	height: 500px;
-	object-fit: contain;
-	
+	background-repeat: no-repeat; 
+	background-size : auto;
+	height: 300px;
 }
 
 * {
 	box-sizing: border-box;
 }
-.search{
+
+.search {
 	text-align: center;
 }
 
-.leaderboard {
-	height: 400px;
+table {
+  border: 1px solid;
 }
+
+

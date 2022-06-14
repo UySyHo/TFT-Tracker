@@ -14,6 +14,8 @@
 </head>
 <body>
 	<h1>${searchSummoner.name}</h1>
-	<h1>${searchSummoner.summonerLevel}</h1>
+	<h1>Level ${searchSummoner.summonerLevel}</h1>
+	<img src="https://ddragon.poro.gg/12.11.1/img/profileicon/${searchSummoner.profileIconId}.png" alt="" />
+	
  </body>
 </html>
