@@ -17,3 +17,30 @@
 .leaderboard {
 	height: 400px;
 }
+
+.historytable{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.historytable > td, .historytable > tr {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.historytr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.myDiv {
+  border: 3px outset red;
+  background-color: white;    
+  text-align: center;
+}
+.match{
+  text-align: left;
+}
+.ranks {
+text-align: left;

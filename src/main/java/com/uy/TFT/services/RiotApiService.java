@@ -22,6 +22,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
+	private String apiKey = "RGAPI-465d3fe3-b57f-4539-99fe-2be4a5307a6e";
 	
 
 	// CONSTRUCTOR
@@ -37,7 +38,7 @@ public class RiotApiService {
 
 	public String getTFT() {
 		String result = rest.getForObject(
-				"https://na1.api.riotgames.com/tft/league/v1/challenger?api_key=RGAPI-daaead2d-3250-40f3-b5e8-e594ab481c07",
+				"https://na1.api.riotgames.com/tft/league/v1/challenger?api_key=" + apiKey,
 				String.class);
 		return result;
 
@@ -46,7 +47,7 @@ public class RiotApiService {
 	public Map<String, String> getSummonerByName(String name) {
 		
 		String url = String.format(
-				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=RGAPI-daaead2d-3250-40f3-b5e8-e594ab481c07",
+				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
 				name);
 		
 		
@@ -62,7 +63,7 @@ public class RiotApiService {
 	
 	public List<HashMap<String, String>> getLeaderboard() {
 		
-		String url = "https://na1.api.riotgames.com/tft/league/v1/rated-ladders/RANKED_TFT_TURBO/top?api_key=RGAPI-daaead2d-3250-40f3-b5e8-e594ab481c07";
+		String url = "https://na1.api.riotgames.com/tft/league/v1/rated-ladders/RANKED_TFT_TURBO/top?api_key=" + apiKey;
 		
 		
 		ParameterizedTypeReference<List<HashMap<String, String>>>responseType = new ParameterizedTypeReference<List<HashMap<String, String>>>() {
