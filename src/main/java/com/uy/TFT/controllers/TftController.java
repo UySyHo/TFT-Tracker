@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.uy.TFT.models.Leaderboard;
 import com.uy.TFT.models.SearchModel;
 import com.uy.TFT.services.RiotApiService;
 
@@ -22,7 +23,7 @@ public class TftController {
 	public String tft(SearchModel searchModel, Model model, BindingResult resultl) {
 		RiotApiService riotApiService = new RiotApiService();
 		model.addAttribute("search", new SearchModel());
-		List<HashMap<String, String>> searchLeaderboard = riotApiService.getLeaderboard();
+		Leaderboard searchLeaderboard = riotApiService.getLeaderboard();
 		model.addAttribute("searchLeaderboard", searchLeaderboard);
 		return "tft.jsp";
 		
@@ -33,7 +34,9 @@ public class TftController {
 	public String register(@Valid @ModelAttribute("search") SearchModel searchModel, Model model, BindingResult result) {
 		RiotApiService riotApiService = new RiotApiService();
 		Map<String, String> searchSummoner = riotApiService.getSummonerByName(searchModel.getSummonerName());
+		List<HashMap<String, String>> searchMatchHistory = riotApiService.getMatchHistoryByName(searchModel.getSummonerName());
 		model.addAttribute("searchSummoner", searchSummoner);
+		model.addAttribute("searchMatchHistory", searchMatchHistory);
 		return "show.jsp";
 
 	}

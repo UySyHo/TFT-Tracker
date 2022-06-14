@@ -48,7 +48,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="player" items="${searchLeaderboard}">
+				<c:forEach var="player" items="${searchLeaderboard.players}">
 					<tr>
 						<td><c:out value="${player.previousUpdateLadderPosition}"></c:out></td>
 						<td><c:out value="${player.summonerName}"></c:out></td>

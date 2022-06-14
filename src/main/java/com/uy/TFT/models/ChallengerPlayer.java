@@ -1,5 +1,7 @@
 package com.uy.TFT.models;
 
+import org.hibernate.annotations.Any;
+
 public class ChallengerPlayer {
 	
 	private String summonerId;
@@ -14,7 +16,19 @@ public class ChallengerPlayer {
 	
 	private Integer previousUpdateLadderPosition;
 	
+	private Long winPercentLastTwentyGames;
+	
 	public ChallengerPlayer() {}
+
+	public ChallengerPlayer(String summonerId, String summonerName, String ratedTier, Integer ratedRating,
+			Integer wins, Integer previousUpdateLadderPosition) {
+		this.summonerId = summonerId;
+		this.summonerName = summonerName;
+		this.ratedTier = ratedTier;
+		this.ratedRating = ratedRating;
+		this.wins = wins;
+		this.previousUpdateLadderPosition = previousUpdateLadderPosition;
+	}
 
 	public String getSummonerId() {
 		return summonerId;
@@ -62,6 +76,14 @@ public class ChallengerPlayer {
 
 	public void setPreviousUpdateLadderPosition(Integer previousUpdateLadderPosition) {
 		this.previousUpdateLadderPosition = previousUpdateLadderPosition;
+	}
+
+	public Long getWinPercentLastTwentyGames() {
+		return winPercentLastTwentyGames;
+	}
+
+	public void setWinPercentLastTwentyGames(Long winPercentLastTwentyGames) {
+		this.winPercentLastTwentyGames = winPercentLastTwentyGames;
 	}
 
 }
