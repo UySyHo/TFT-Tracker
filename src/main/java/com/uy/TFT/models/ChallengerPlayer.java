@@ -1,7 +1,5 @@
 package com.uy.TFT.models;
 
-import org.hibernate.annotations.Any;
-
 public class ChallengerPlayer {
 	
 	private String summonerId;

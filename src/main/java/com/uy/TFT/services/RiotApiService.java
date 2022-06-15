@@ -24,7 +24,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-465d3fe3-b57f-4539-99fe-2be4a5307a6e";
+	private String apiKey = "RGAPI-f9bf73b0-2c91-4661-82f8-c8af4d9d5d1e";
 	
 
 	// CONSTRUCTOR
@@ -35,7 +35,7 @@ public class RiotApiService {
 		headers.add("Accept", "*/*");
 		headers.add("Accept-Language", "en-US,en;q=0.9");
 		headers.add("Accept-Charset", "application/x-www-form-urlencoded; charset=UTF-8");
-		headers.add("X-Riot-Token", "RGAPI-465d3fe3-b57f-4539-99fe-2be4a5307a6e");
+		headers.add("X-Riot-Token", apiKey);
 	}
 
 	public String getTFT() {
@@ -92,53 +92,53 @@ public class RiotApiService {
 		return new Leaderboard(players);
 	}
 	
-	public List<HashMap<String, String>> getMatchHistoryByName(String summonerName) {
-		// set up data structure to store our expected results
-		List<HashMap<String, String>> results = new ArrayList();
-		
-		// call riot API for match history by player name; this is going to return a list of match id's
-		String url = String.format(
-				"get url from riot api" + apiKey,
-				summonerName);
-		ParameterizedTypeReference<List<HashMap<String, String>>>responseType = new ParameterizedTypeReference<List<HashMap<String, String>>>() {
-		};
-		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
-		List<HashMap<String, String>> response = rest.exchange(request, responseType).getBody();
-		
-		// loop through all matches, get their match id, call riot API for individual matches
-		for(HashMap<String, String> match : response) {
-			if(match.containsKey("matchId")) {
-				results.add(getMatchById(match.get("matchId")));
-			}
-		}
-		
-		return results;
-	}
+//	public List<HashMap<String, String>> getMatchHistoryByName(String summonerName) {
+//		// set up data structure to store our expected results
+//		List<HashMap<String, String>> results = new ArrayList();
+//		
+//		// call riot API for match history by player name; this is going to return a list of match id's
+//		String url = String.format(
+//				"get url from riot api" + apiKey,
+//				summonerName);
+//		ParameterizedTypeReference<List<HashMap<String, String>>>responseType = new ParameterizedTypeReference<List<HashMap<String, String>>>() {
+//		};
+//		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+//		List<HashMap<String, String>> response = rest.exchange(request, responseType).getBody();
+//		
+//		// loop through all matches, get their match id, call riot API for individual matches
+//		for(HashMap<String, String> match : response) {
+//			if(match.containsKey("matchId")) {
+//				results.add(getMatchById(match.get("matchId")));
+//			}
+//		}
+//		
+//		return results;
+//	}
 	
-	public HashMap<String, String> getMatchById(String id){
-		// code here to call riot API for match details by match id
-		
-		String url = String.format(
-				"get url from riot api" + apiKey,
-				id);
-		
-		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
-		};
-		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
-		
-		HashMap<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
-				
-		return jsonDictionary;
-	}
+//	public HashMap<String, String> getMatchById(String id){
+//		// code here to call riot API for match details by match id
+//		
+//		String url = String.format(
+//				"get url from riot api" + apiKey,
+//				id);
+//		
+//		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
+//		};
+//		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+//		
+//		HashMap<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
+//				
+//		return jsonDictionary;
+//	}
 	
 	
-	public Double getWinPercentage(String summonerName, Integer totalGames) {
-		// code here to get the last 20 matches from riot api
-		
-		// loop through each match, count how many times the summoner place first?
-		
-		// divide count by 20
-		
-		return 100.00;
-	}
+//	public Double getWinPercentage(String summonerName, Integer totalGames) {
+//		// code here to get the last 20 matches from riot api
+//		
+//		// loop through each match, count how many times the summoner place first?
+//		
+//		// divide count by 20
+//		
+//		return 100.00;
+//	}
 }
