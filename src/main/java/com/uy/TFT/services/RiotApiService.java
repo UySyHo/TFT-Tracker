@@ -14,8 +14,12 @@ import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uy.TFT.models.ChallengerPlayer;
 import com.uy.TFT.models.Leaderboard;
+import com.uy.TFT.models.Summoner;
 
 @Service
 public class RiotApiService {
@@ -61,6 +65,29 @@ public class RiotApiService {
 		Map<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
 		
 		return jsonDictionary;
+		
+	}
+
+    public Summoner getSummonerByName2(String name) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+        
+		String url = String.format(
+				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
+				name);
+		
+		
+		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
+		};
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON)
+				.build();
+		String json = rest.exchange(request, responseType).getBody();
+		
+		System.out.println(json);
+		
+		Summoner summoner = objectMapper.readValue(json, Summoner.class);
+		
+		return summoner;
 		
 	}
 	

@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.uy.TFT.models.Leaderboard;
 import com.uy.TFT.models.SearchModel;
+import com.uy.TFT.models.Summoner;
 import com.uy.TFT.services.RiotApiService;
 
 @Controller
@@ -33,7 +36,16 @@ public class TftController {
 	@PostMapping("/search")
 	public String register(@Valid @ModelAttribute("search") SearchModel searchModel, Model model, BindingResult result) {
 		RiotApiService riotApiService = new RiotApiService();
-		Map<String, String> searchSummoner = riotApiService.getSummonerByName(searchModel.getSummonerName());
+		Summoner searchSummoner = null;
+		try {
+			searchSummoner = riotApiService.getSummonerByName2(searchModel.getSummonerName());
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		List<HashMap<String, String>> searchMatchHistory = riotApiService.getMatchHistoryByName(searchModel.getSummonerName());
 		model.addAttribute("searchSummoner", searchSummoner);
 //		model.addAttribute("searchMatchHistory", searchMatchHistory);
