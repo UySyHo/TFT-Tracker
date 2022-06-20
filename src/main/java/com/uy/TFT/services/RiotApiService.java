@@ -24,7 +24,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-f9bf73b0-2c91-4661-82f8-c8af4d9d5d1e";
+	private String apiKey = "RGAPI-6ab2f686-996b-4c63-8655-9d87174f73bc";
 	
 
 	// CONSTRUCTOR
@@ -64,6 +64,24 @@ public class RiotApiService {
 		
 	}
 	
+public Map<String, String> getSummonerByName2(String name) {
+		
+		String url = String.format(
+				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
+				name);
+		
+		
+		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
+		};
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON)
+				.build();
+		Map<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
+		
+		return jsonDictionary;
+		
+	}
+	
+	
 	public Leaderboard getLeaderboard() {
 		List<ChallengerPlayer> players = new ArrayList<ChallengerPlayer>();
 		
@@ -92,6 +110,8 @@ public class RiotApiService {
 		return new Leaderboard(players);
 	}
 	
+	
+	
 //	public List<HashMap<String, String>> getMatchHistoryByName(String summonerName) {
 //		// set up data structure to store our expected results
 //		List<HashMap<String, String>> results = new ArrayList();
@@ -115,21 +135,21 @@ public class RiotApiService {
 //		return results;
 //	}
 	
-//	public HashMap<String, String> getMatchById(String id){
-//		// code here to call riot API for match details by match id
-//		
-//		String url = String.format(
-//				"get url from riot api" + apiKey,
-//				id);
-//		
-//		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
-//		};
-//		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
-//		
-//		HashMap<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
-//				
-//		return jsonDictionary;
-//	}
+	public HashMap<String, String> getMatchById(String id){
+		// code here to call riot API for match details by match id
+		
+		String url = String.format(
+				"https://americas.api.riotgames.com/tft/match/v1/matches/NA1_4336271090" + apiKey,
+				id);
+		
+		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
+		};
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+		
+		HashMap<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
+				
+		return jsonDictionary;
+	}
 	
 	
 //	public Double getWinPercentage(String summonerName, Integer totalGames) {
