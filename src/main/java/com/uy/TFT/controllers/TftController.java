@@ -34,6 +34,7 @@ public class TftController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		model.addAttribute("searchLeaderboard", searchLeaderboard);
 		return "tft.jsp";
 		

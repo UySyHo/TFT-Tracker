@@ -12,10 +12,22 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<style>
+body{
+ background-color: #6495ED;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  }
+  </style>
 <body>
 	<h1>Success! hello ${name}</h1>
 	${user_id}
 	<a href="/logout">logout</a>
+	
 
 </body>
 </html>

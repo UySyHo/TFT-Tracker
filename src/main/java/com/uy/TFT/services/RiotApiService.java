@@ -54,6 +54,7 @@ public class RiotApiService {
 
 	public Map<String, String> getSummonerByName(String name) {
 
+
 		String url = String
 				.format("https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey, name);
 
@@ -71,7 +72,6 @@ public class RiotApiService {
 
 		String url = String
 				.format("https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey, name);
-
 		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
 		};
 		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
