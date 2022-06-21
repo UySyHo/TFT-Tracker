@@ -15,22 +15,22 @@
 <title>Dashboard</title>
 </head>
 <body>
-	<nav aria-label="breadcrumb">
+	<nav aria-label="breadcrumb" class = "navbar">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/ideas/new">Register</a></li>
-			<li class="breadcrumb-item"><a href="/ideas/new">Sign in</a></li>
-			<li class="breadcrumb-item"><a href="/logout">Logout</a></li>>
+			<li class="breadcrumbs"><a href="/ideas/new">Sign in</a></li>
+			<li class="breadcrumb-item"><a href="/logout">Logout</a></li>
 		</ol>
 	</nav>
 	<div class="practice">
 		<form:form action="/search" method="post" modelAttribute="search"
-			class="col-5 mx-auto border p-5 my-5 text-dark bg-light">
+			class="col-5 my-5 text-dark searchform">
 			<div class="search">
 				<label>SummonerName:</label>
-				<form:input path="summonerName" class="form-control" />
 				<form:errors path="summonerName" class="text-danger" />
+				<form:input path="summonerName" class="form-control searchinput" />
+				<input type="submit" value="Search" class="fa fa-search searchbutton" />
 			</div>
-			<input type="submit" value="Search" class="fa fa-search" />
 		</form:form>
 	</div>
 	<div>
@@ -47,12 +47,12 @@
 					<th>Wins:</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="leaderboardTable">
 				<c:forEach var="player" items="${searchLeaderboard.players}">
 					<tr>
 						<td><c:out value="${player.previousUpdateLadderPosition}"></c:out></td>
 						<td><c:out value="${player.summonerName}"></c:out></td>
-						<td><img
+						<td><img class = "challengerimg"
 							src="https://cdn.lolchess.gg/images/lol/tier/challenger_1.png"
 							alt="Challenger" /></td>
 						<td><c:out value="${player.ratedRating}"></c:out></td>

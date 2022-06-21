@@ -27,6 +27,8 @@ public class TftController {
 		RiotApiService riotApiService = new RiotApiService();
 		model.addAttribute("search", new SearchModel());
 		Leaderboard searchLeaderboard = riotApiService.getLeaderboard();
+		//Leaderboard searchLeaderboard = new Leaderboard();
+
 		model.addAttribute("searchLeaderboard", searchLeaderboard);
 		return "tft.jsp";
 		

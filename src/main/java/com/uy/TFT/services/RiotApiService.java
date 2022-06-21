@@ -28,7 +28,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-f9bf73b0-2c91-4661-82f8-c8af4d9d5d1e";
+	private String apiKey = "RGAPI-19763435-f5c1-403f-b4be-9508ef7c7f69";
 	
 
 	// CONSTRUCTOR
@@ -52,7 +52,7 @@ public class RiotApiService {
 	}
 
 	public Map<String, String> getSummonerByName(String name) {
-		
+		// { "key": "v", "anything": "anything value" }
 		String url = String.format(
 				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
 				name);
@@ -70,12 +70,11 @@ public class RiotApiService {
 
     public Summoner getSummonerByName2(String name) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		
         
 		String url = String.format(
 				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
 				name);
-		
+	
 		
 		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
 		};
