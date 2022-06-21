@@ -1,20 +1,18 @@
 package com.uy.TFT.models;
 
-import java.util.List;
-
 public class Leaderboard {
 
- private List<ChallengerPlayer> players;
+ private ChallengerPlayer[] players;
  
- public Leaderboard(List<ChallengerPlayer> players) {
-	 this.players = players;
+ public Leaderboard(ChallengerPlayer[] myObjects) {
+	 this.players = myObjects;
  }
 
-public List<ChallengerPlayer> getPlayers() {
+public ChallengerPlayer[] getPlayers() {
 	return players;
 }
 
-public void setPlayers(List<ChallengerPlayer> players) {
+public void setPlayers(ChallengerPlayer[] players) {
 	this.players = players;
 }
  

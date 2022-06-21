@@ -2,7 +2,10 @@ package com.uy.TFT.models;
 
 import java.util.List;
 
-public class Match {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TftMatch {
 	private List<Participant> participants;
 	private String matchId;
 	
@@ -26,7 +29,7 @@ public class Match {
 	
 	private Double timeEliminated;
 	
-	public Match() {}
+	public TftMatch() {}
 
 	public List<Participant> getParticipants() {
 		return participants;

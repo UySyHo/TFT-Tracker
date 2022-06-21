@@ -14,8 +14,15 @@ import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import com.uy.TFT.models.ChallengerPlayer;
 import com.uy.TFT.models.Leaderboard;
+import com.uy.TFT.models.Participant;
+import com.uy.TFT.models.Summoner;
+import com.uy.TFT.models.TftMatch;
 
 @Service
 public class RiotApiService {
@@ -24,8 +31,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-6ab2f686-996b-4c63-8655-9d87174f73bc";
-	
+	private String apiKey = "RGAPI-19763435-f5c1-403f-b4be-9508ef7c7f69";
 
 	// CONSTRUCTOR
 	public RiotApiService() {
@@ -41,77 +47,66 @@ public class RiotApiService {
 	public String getTFT() {
 		String result = rest.getForObject(
 
-				"https://na1.api.riotgames.com/tft/league/v1/challenger?api_key=" + apiKey,
-				String.class);
+				"https://na1.api.riotgames.com/tft/league/v1/challenger?api_key=" + apiKey, String.class);
 		return result;
 
 	}
 
 	public Map<String, String> getSummonerByName(String name) {
-		
-		String url = String.format(
-				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
-				name);
-		
-		
+
+		String url = String
+				.format("https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey, name);
+
 		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
 		};
-		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON)
-				.build();
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
 		Map<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
-		
+
 		return jsonDictionary;
-		
+
 	}
-	
-public Map<String, String> getSummonerByName2(String name) {
-		
-		String url = String.format(
-				"https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey,
-				name);
-		
-		
-		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
+
+	public Summoner getSummonerByName2(String name) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		String url = String
+				.format("https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/%s?api_key=" + apiKey, name);
+
+		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
 		};
-		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON)
-				.build();
-		Map<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
-		
-		return jsonDictionary;
-		
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+		String json = rest.exchange(request, responseType).getBody();
+		System.out.println(json);
+		Summoner summoner = objectMapper.readValue(json, Summoner.class);
+
+		return summoner;
+
 	}
-	
-	
-	public Leaderboard getLeaderboard() {
+
+	public Leaderboard getLeaderboard() throws JsonMappingException, JsonProcessingException {
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
 		List<ChallengerPlayer> players = new ArrayList<ChallengerPlayer>();
-		
+
 		String url = "https://na1.api.riotgames.com/tft/league/v1/rated-ladders/RANKED_TFT_TURBO/top?api_key=" + apiKey;
-		
-		ParameterizedTypeReference<List<HashMap<String, Object>>>responseType = new ParameterizedTypeReference<List<HashMap<String, Object>>>() {
+
+		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
 		};
-		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON)
-				.build();
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+
+		String json = rest.exchange(request, responseType).getBody();
+		System.out.println(json);
+
+		// Long winPercentageTwentyGames =
+		// getWinPercentage(player.get("summonerId").toString(), 20);
+		ChallengerPlayer[] myObjects = objectMapper.readValue(json, ChallengerPlayer[].class);
+		Leaderboard leaderboard = new Leaderboard(myObjects);
 		
-		List<HashMap<String, Object>> jsonDictionary = rest.exchange(request, responseType).getBody();
-		
-		for(HashMap<String, Object> player : jsonDictionary) {
-			//Long winPercentageTwentyGames = getWinPercentage(player.get("summonerId").toString(), 20);
-			players.add(
-				new ChallengerPlayer(
-					player.get("summonerId").toString(),
-					player.get("summonerName").toString(),
-					player.get("ratedTier").toString(),
-					(Integer) player.get("ratedRating"),
-					(Integer) player.get("wins"),
-					(Integer) player.get("previousUpdateLadderPosition")
-				)
-			);
-		}
-		return new Leaderboard(players);
+
+		return leaderboard;
 	}
-	
-	
-	
+
 //	public List<HashMap<String, String>> getMatchHistoryByName(String summonerName) {
 //		// set up data structure to store our expected results
 //		List<HashMap<String, String>> results = new ArrayList();
@@ -135,23 +130,27 @@ public Map<String, String> getSummonerByName2(String name) {
 //		return results;
 //	}
 	
-	public HashMap<String, String> getMatchById(String id){
+
+
+	public TftMatch getMatchById(String matchId) throws JsonMappingException, JsonProcessingException {
 		// code here to call riot API for match details by match id
 		
-		String url = String.format(
-				"https://americas.api.riotgames.com/tft/match/v1/matches/NA1_4336271090" + apiKey,
-				id);
+		ObjectMapper objectMapper = new ObjectMapper();
 		
-		ParameterizedTypeReference<HashMap<String, String>> responseType = new ParameterizedTypeReference<HashMap<String, String>>() {
+
+		String url = "https://americas.api.riotgames.com/tft/match/v1/matches/"+ matchId + "/?api_key=" + apiKey;
+
+		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
 		};
 		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+		String json = rest.exchange(request, responseType).getBody();
+		System.out.println(json);
 		
-		HashMap<String, String> jsonDictionary = rest.exchange(request, responseType).getBody();
-				
-		return jsonDictionary;
+		TftMatch match = objectMapper.readValue(json, TftMatch.class);
+		
+		return match;
 	}
-	
-	
+
 //	public Double getWinPercentage(String summonerName, Integer totalGames) {
 //		// code here to get the last 20 matches from riot api
 //		

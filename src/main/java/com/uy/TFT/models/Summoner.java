@@ -1,6 +1,10 @@
 package com.uy.TFT.models;
 
 public class Summoner {
+	// class properties
+	private String id;
+	
+	private String accountId;
 	
 	private Integer profileIconId;
 	
@@ -10,9 +14,12 @@ public class Summoner {
 
 	private Integer summonerLevel;
 	
-
+	private Long revisionDate;
+	
+	// constructor
 	public Summoner() {}
 
+	// getters & setters
 	public String getName() {
 		return name;
 	}
@@ -43,5 +50,29 @@ public class Summoner {
 
 	public void setPuuid(String puuid) {
 		this.puuid = puuid;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
+	public Long getRevisionDate() {
+		return revisionDate;
+	}
+
+	public void setRevisionDate(Long revisionDate) {
+		this.revisionDate = revisionDate;
 	}
 }
