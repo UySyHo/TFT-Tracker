@@ -8,7 +8,7 @@
 	background-color:#6495ED;
 	height: 340px;
 	padding-top:150px;
-	padding-left:600px;
+	padding-left:39%;
 	
 
 }
@@ -33,7 +33,7 @@ table {
 .leaderboard {
 	min-height:400px;
 	background-color:#6495ED;
-	padding: 0px 100px;
+	padding: 0px 500px;
 
 }
 
@@ -112,7 +112,15 @@ left: 60px;
 .breadcrumbs
 {
 	position:relative;
-	left:1450px;
+	left: 1510%;
 	color:white;
 }
+
+
+.login
+{
+	padding-top: 1000px;
+}
+
+
 
