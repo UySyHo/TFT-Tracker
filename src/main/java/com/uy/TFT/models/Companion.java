@@ -1,28 +1,28 @@
 package com.uy.TFT.models;
 
 public class Companion {
-	private String contentID;
-	private Integer skinID;
+	private String content_ID;
+	private Integer skin_ID;
 	private String species;
 	
 	public Companion(){
 		
 	}
 
-	public String getContentID() {
-		return contentID;
+	public String getContent_ID() {
+		return content_ID;
 	}
 
-	public void setContentID(String contentID) {
-		this.contentID = contentID;
+	public void setContent_ID(String content_ID) {
+		this.content_ID = content_ID;
 	}
 
-	public Integer getSkinID() {
-		return skinID;
+	public Integer getSkin_ID() {
+		return skin_ID;
 	}
 
-	public void setSkinID(Integer skinID) {
-		this.skinID = skinID;
+	public void setSkin_ID(Integer skin_ID) {
+		this.skin_ID = skin_ID;
 	}
 
 	public String getSpecies() {
@@ -32,5 +32,6 @@ public class Companion {
 	public void setSpecies(String species) {
 		this.species = species;
 	}
-	
+
+
 }

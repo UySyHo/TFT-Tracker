@@ -2,10 +2,10 @@ package com.uy.TFT.models;
 
 public class Trait {
 	private String name;
-	private Integer numUnits;
+	private Integer num_units;
 	private Integer style;
-	private Integer tierCurrent;
-	private Integer tierTotal;
+	private Integer tier_current;
+	private Integer tier_total;
 	
 	public Trait() {}
 
@@ -17,12 +17,12 @@ public class Trait {
 		this.name = name;
 	}
 
-	public Integer getNumUnits() {
-		return numUnits;
+	public Integer getNum_units() {
+		return num_units;
 	}
 
-	public void setNumUnits(Integer numUnits) {
-		this.numUnits = numUnits;
+	public void setNum_units(Integer num_units) {
+		this.num_units = num_units;
 	}
 
 	public Integer getStyle() {
@@ -33,22 +33,24 @@ public class Trait {
 		this.style = style;
 	}
 
-	public Integer getTierCurrent() {
-		return tierCurrent;
+	public Integer getTier_current() {
+		return tier_current;
 	}
 
-	public void setTierCurrent(Integer tierCurrent) {
-		this.tierCurrent = tierCurrent;
+	public void setTier_current(Integer tier_current) {
+		this.tier_current = tier_current;
 	}
 
-	public Integer getTierTotal() {
-		return tierTotal;
+	public Integer getTier_total() {
+		return tier_total;
 	}
 
-	public void setTierTotal(Integer tierTotal) {
-		this.tierTotal = tierTotal;
+	public void setTier_total(Integer tier_total) {
+		this.tier_total = tier_total;
 	}
-	
+
+
+
 	
 
 }

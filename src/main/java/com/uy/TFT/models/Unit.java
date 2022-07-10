@@ -3,7 +3,7 @@ package com.uy.TFT.models;
 import java.util.List;
 
 public class Unit {
-	private String characterId;
+	private String character_id;
 	private List<String> itemNames;
 	private List <Integer> items;
 	private String name;
@@ -12,12 +12,12 @@ public class Unit {
 	
 	public Unit() {}
 
-	public String getCharacterId() {
-		return characterId;
+	public String getCharacter_id() {
+		return character_id;
 	}
 
-	public void setCharacterId(String characterId) {
-		this.characterId = characterId;
+	public void setCharacter_id(String character_id) {
+		this.character_id = character_id;
 	}
 
 	public List<String> getItemNames() {
@@ -59,5 +59,6 @@ public class Unit {
 	public void setTier(Integer tier) {
 		this.tier = tier;
 	}
+
 
 }

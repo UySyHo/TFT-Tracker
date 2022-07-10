@@ -17,8 +17,8 @@
 <body>
 	<nav aria-label="breadcrumb" class = "navbar">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/ideas/new">Register</a></li>
-			<li class="breadcrumbs"><a href="/ideas/new">Sign in</a></li>
+			<li class="breadcrumb-item"><a href="/register">Register</a></li>
+			<li class="breadcrumbs"><a href="login">Sign in</a></li>
 			<li class="breadcrumb-item"><a href="/logout">Logout</a></li>
 		</ol>
 	</nav>
@@ -45,6 +45,8 @@
 					<th>Tier:</th>
 					<th>LP:</th>
 					<th>Wins:</th>
+					<th>Losses:</th>
+					<th>WinRate:</th>
 				</tr>
 			</thead>
 			<tbody class="leaderboardTable">
@@ -57,6 +59,8 @@
 							alt="Challenger" /></td>
 						<td><c:out value="${player.ratedRating}"></c:out></td>
 						<td><c:out value="${player.wins}"></c:out></td>
+						<td><c:out value="${player.losses}"></c:out></td>
+						<td><c:out value="${player.losses}"></c:out></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -20,6 +20,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import com.uy.TFT.models.ChallengerPlayer;
 import com.uy.TFT.models.Leaderboard;
+import com.uy.TFT.models.ListOfMatchesId;
+import com.uy.TFT.models.ListOfTftMatches;
 import com.uy.TFT.models.Participant;
 import com.uy.TFT.models.Summoner;
 import com.uy.TFT.models.TftMatch;
@@ -31,7 +33,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-19763435-f5c1-403f-b4be-9508ef7c7f69";
+	private String apiKey = "RGAPI-1cc5bdff-7f5e-4b6a-98cd-e5f846a05210";
 
 	// CONSTRUCTOR
 	public RiotApiService() {
@@ -129,7 +131,7 @@ public class RiotApiService {
 //		
 //		return results;
 //	}
-	
+//	
 
 
 	public TftMatch getMatchById(String matchId) throws JsonMappingException, JsonProcessingException {
@@ -145,11 +147,32 @@ public class RiotApiService {
 		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
 		String json = rest.exchange(request, responseType).getBody();
 		System.out.println(json);
-		
 		TftMatch match = objectMapper.readValue(json, TftMatch.class);
 		
 		return match;
 	}
+	
+	
+	public String[] getMatchIdsByPuuid(String puuid) throws JsonMappingException, JsonProcessingException {
+		// code here to call riot API for match details by match id
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+
+		String url = "https://americas.api.riotgames.com/tft/match/v1/matches/by-puuid/" + puuid + "/ids" + "/?api_key=" + apiKey;
+
+		ParameterizedTypeReference<String> responseType = new ParameterizedTypeReference<String>() {
+		};
+		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
+		String json = rest.exchange(request, responseType).getBody();
+		System.out.println(json);
+		String[] matchIds = objectMapper.readValue(json, String[].class);
+		
+		return matchIds;
+	}
+	
+	
+	
 
 //	public Double getWinPercentage(String summonerName, Integer totalGames) {
 //		// code here to get the last 20 matches from riot api

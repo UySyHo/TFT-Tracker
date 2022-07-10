@@ -12,6 +12,8 @@ public class ChallengerPlayer {
 	
 	private Integer wins;
 	
+	private Integer losses;
+	
 	private Integer previousUpdateLadderPosition;
 	
 	private Long winPercentLastTwentyGames;
@@ -19,12 +21,13 @@ public class ChallengerPlayer {
 	public ChallengerPlayer() {}
 
 	public ChallengerPlayer(String summonerId, String summonerName, String ratedTier, Integer ratedRating,
-			Integer wins, Integer previousUpdateLadderPosition) {
+			Integer wins,Integer losses, Integer previousUpdateLadderPosition) {
 		this.summonerId = summonerId;
 		this.summonerName = summonerName;
 		this.ratedTier = ratedTier;
 		this.ratedRating = ratedRating;
 		this.wins = wins;
+		this.losses = losses;
 		this.previousUpdateLadderPosition = previousUpdateLadderPosition;
 	}
 
@@ -82,6 +85,14 @@ public class ChallengerPlayer {
 
 	public void setWinPercentLastTwentyGames(Long winPercentLastTwentyGames) {
 		this.winPercentLastTwentyGames = winPercentLastTwentyGames;
+	}
+
+	public Integer getLosses() {
+		return losses;
+	}
+
+	public void setLosses(Integer losses) {
+		this.losses = losses;
 	}
 
 }

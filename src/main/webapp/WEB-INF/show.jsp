@@ -102,6 +102,12 @@
 	<h1>${searchSummoner.name}</h1>
 	<h1>Level ${searchSummoner.summonerLevel}</h1>
 	<img src="https://ddragon.poro.gg/12.11.1/img/profileicon/${searchSummoner.profileIconId}.png" alt="" />
-	
+	<p> This is  ${getMatchById.metadata.match_id}</p>
+	<p> matchPuid  ${getMatchByPuuid}</p>
+					<c:forEach var="id" items="${getMatchByPuuid}">
+					<tr>
+						<td><c:out value="${id}"></c:out></td>
+					</tr>
+				</c:forEach>
  </body>
 </html>
