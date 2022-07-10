@@ -37,6 +37,7 @@ public class TftController {
 			e.printStackTrace();
 		}
 
+		// serves back to request
 		model.addAttribute("searchLeaderboard", searchLeaderboard);
 		return "tft.jsp";
 		
@@ -78,6 +79,23 @@ public class TftController {
 		
 	}
 	
+	@GetMapping("/myprofile")
+	public String myProfile(SearchModel searchModel, Model model, BindingResult resultl)
+	{
+		RiotApiService riotApiService = new RiotApiService();
+		model.addAttribute("search", new SearchModel());
+		Leaderboard searchLeaderboard = null;
+		try {
+			searchLeaderboard = riotApiService.getLeaderboard();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// serves back to request
+		model.addAttribute("searchLeaderboard", searchLeaderboard);
+		return "myprofile.jsp";
+	}
 	
 //	@PostMapping("/coaches")
 //	public String coach(@Valid @ModelAttribute("coaches") SearchModel searchModel, Model model, BindingResult result)
