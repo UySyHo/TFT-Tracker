@@ -33,7 +33,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-a17d6177-f148-4406-b543-0272cd2dd0af";
+	private String apiKey = "RGAPI-4c5464ec-5ea5-4bad-9709-d5da31cd883e";
 
 
 	// CONSTRUCTOR
