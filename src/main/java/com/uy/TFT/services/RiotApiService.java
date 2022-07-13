@@ -20,8 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import com.uy.TFT.models.ChallengerPlayer;
 import com.uy.TFT.models.Leaderboard;
-import com.uy.TFT.models.ListOfMatchesId;
-import com.uy.TFT.models.ListOfTftMatches;
 import com.uy.TFT.models.Participant;
 import com.uy.TFT.models.Summoner;
 import com.uy.TFT.models.TftMatch;
@@ -33,7 +31,7 @@ public class RiotApiService {
 	private RestTemplate rest;
 	private HttpHeaders headers;
 	private HttpStatus status;
-	private String apiKey = "RGAPI-a17d6177-f148-4406-b543-0272cd2dd0af";
+	private String apiKey = "RGAPI-3605506e-37dd-4d5d-a10a-ec3e6141521e";
 
 
 	// CONSTRUCTOR
