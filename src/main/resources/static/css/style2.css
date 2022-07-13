@@ -1,0 +1,200 @@
+@charset "ISO-8859-1";
+
+
+.nav_links {
+  background-color: #110057;
+  padding: 1%;
+  color:white;
+}
+.nav_links li {
+  display: inline-block;
+  padding: 0px 20px;
+  font-size: 15px;
+}
+.sign_in
+{
+  text-align:right;
+}
+
+.nav_links li a:hover {
+  color: white;
+}
+
+.myDiv1 
+{
+  border: 1px outset white;
+  background-color: #238EDB;
+  padding:4%;
+  display:flex;
+  justify-content:center;
+  
+  
+ }
+.summonerbox
+{
+  background-color:#238EDB;
+
+}
+.summonerbox2
+{
+  border-style:solid;
+   
+}
+.summonerbox3
+{
+  border-style:solid;
+   
+  
+}
+.buttons {
+  padding-top: 0.5%;
+  text-align:
+}
+.update {
+  padding: 0.6%;
+}
+.history
+{
+  background-color:#535AFF;
+}
+
+.nameHeader
+{
+  font-size:150%;
+}
+.user_profile {
+  background-color: whitesmoke;
+  font-weight: bold;
+  background-image: ();
+}
+
+.user_profile li {
+  display: inline-block;
+  padding: 0px 20px;
+  font-size: 15px;
+  border: 5px gray;
+  background-color: gray;
+  text-align: center;
+}
+.sum
+{
+  padding-top:5%;
+  background-color:pink;
+}
+.sum li
+{
+   display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: 5px gray;
+  background-color: gray;
+  text-align: center;
+}
+
+  .myDiv2 
+{
+ border: 1px outset white;
+ background-color: Gainsboro;
+  text-align: left;
+}
+.nameHeader 
+{
+   display: inline;
+}
+
+ .myDiv3, .tierwins
+{
+ border: 1px outset white;
+ background-color: white;
+                    
+}
+.stuff
+{
+  display: inline-block;
+  font-weight:bold;
+   border-bottom-width:1px;
+  padding:10px;
+  
+  
+}
+.rate
+{
+  padding:4.9%;
+}
+.fourrate
+{
+  padding:4.8%;
+}
+.avgranking
+{
+  padding:3.3%;
+}
+.statwin
+{
+  padding-top:30px;
+  padding:30px;
+}
+.top4
+{
+  padding:30px;
+}
+.Played
+{
+  padding:30px;
+}
+
+.type
+{
+ padding:4px;
+ border-bottom-width:1px;
+ border-bottom-style: solid;
+ border-color: var(--gray200);
+}
+.history
+{
+  color:white;
+}
+
+.history th
+{
+  padding:30px;
+  position:relative;
+  color:white;
+  
+}
+.trait
+{
+ 
+  
+}
+.play
+{
+ 
+}
+.winner
+{
+
+}
+.traittop
+{
+  
+}
+.traitchamp
+{
+  
+}
+.traitplay
+{
+  
+}
+.traitwin
+{
+  
+}
+.traittops
+{
+  
+}
+
+
+

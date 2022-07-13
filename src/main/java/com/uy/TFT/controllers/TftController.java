@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.uy.TFT.models.Leaderboard;
-import com.uy.TFT.models.ListOfMatchesId;
+
 import com.uy.TFT.models.TftMatch;
 import com.uy.TFT.models.SearchModel;
 import com.uy.TFT.models.Summoner;
@@ -47,7 +47,7 @@ public class TftController {
 	@PostMapping("/search")
 	public String register(@Valid @ModelAttribute("search") SearchModel searchModel, Model model, BindingResult result) throws JsonMappingException, JsonProcessingException {
 		RiotApiService riotApiService = new RiotApiService();
-		ArrayList<TftMatch> listOfMatches;
+		ArrayList<TftMatch> listOfMatches = new ArrayList<TftMatch>();
 		Summoner searchSummoner = null;
 		try {
 			searchSummoner = riotApiService.getSummonerByName2(searchModel.getSummonerName());
@@ -63,16 +63,11 @@ public class TftController {
 		model.addAttribute("getMatchByPuuid", listOfMatchIds);
 		
 		for(int i = 0; i < listOfMatchIds.length; i++) {
-			
-//			listOfMatches.add(getMatchId);
-			
-			
-			
+			TftMatch match = riotApiService.getMatchById(listOfMatchIds[i]);
+			listOfMatches.add(match);
 		}
-		
-		TftMatch getMatchById = riotApiService.getMatchById("NA1_4336271090");
 		model.addAttribute("searchSummoner", searchSummoner);
-		model.addAttribute("getMatchById", getMatchById);
+		model.addAttribute("listOfMatches", listOfMatches);
 		
 
 		return "show.jsp";

@@ -36,7 +36,7 @@ public class User {
     private String confirm;
     
     
-  
+    
     // ----- CONSTRUCTOR -----------
     public User() {}
     

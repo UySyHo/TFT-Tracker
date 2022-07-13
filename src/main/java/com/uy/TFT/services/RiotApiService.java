@@ -20,8 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import com.uy.TFT.models.ChallengerPlayer;
 import com.uy.TFT.models.Leaderboard;
-import com.uy.TFT.models.ListOfMatchesId;
-import com.uy.TFT.models.ListOfTftMatches;
 import com.uy.TFT.models.Participant;
 import com.uy.TFT.models.Summoner;
 import com.uy.TFT.models.TftMatch;
