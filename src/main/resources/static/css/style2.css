@@ -2,14 +2,18 @@
 
 
 .nav_links {
+  
+  background-image:url("../images/shen.jpg");
   background-color: #110057;
   padding: 1%;
   color:white;
+  
 }
 .nav_links li {
+    
   display: inline-block;
-  padding: 0px 20px;
   font-size: 15px;
+  padding-left:96%;
 }
 .sign_in
 {
@@ -20,36 +24,40 @@
   color: white;
 }
 
-.myDiv1 
+.summonerOverviewBox 
 {
+  background-image:url("../images/penguin.png");
+  background-size:200px;
+  background-repeat:no-repeat;
+  background-position: 100% 1%;
   border: 1px outset white;
   background-color: #238EDB;
-  padding:4%;
   display:flex;
   justify-content:center;
-  
+  padding: 4% 0% 4% 0%;
   
  }
-.summonerbox
+ 
+.summonerBoxLeft
 {
-  background-color:#238EDB;
+  flex:4;
+  border-style:solid;
+   
+}
+.summonerBoxRight
+{
+  flex:3;
+  border-style:solid;
+}
+.gutter {
+	flex:1;
+  border: 1px outset white;
+}
 
-}
-.summonerbox2
-{
-  border-style:solid;
-   
-}
-.summonerbox3
-{
-  border-style:solid;
-   
-  
-}
 .buttons {
   padding-top: 0.5%;
-  text-align:
 }
+
 .update {
   padding: 0.6%;
 }

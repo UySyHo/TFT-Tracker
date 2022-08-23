@@ -188,8 +188,6 @@
 							</c:forEach>
 						</c:forEach>
 					</div>
-
-
 				</c:forEach>
 </body>
 </html>
