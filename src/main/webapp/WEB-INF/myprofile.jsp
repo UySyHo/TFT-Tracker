@@ -6,9 +6,7 @@
 
             <head>
                 <link href="/css/style.css" rel="stylesheet" />
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-                    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-                    crossorigin="anonymous">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
                 <meta charset="ISO-8859-1">
                 <title>Insert title here</title>
             </head>
@@ -35,71 +33,72 @@
                 .textProperty {
                     color: white;
                 }
+                
                 .textPropertyTable {
                     color: black;
                 }
-
+                
                 .myDiv1 {
                     border: 1px outset white;
                     background-color: whitesmoke;
                     text-align: center;
                 }
-
+                
                 .myDiv2 {
                     border: 1px outset white;
                     background-color: Gainsboro;
                     text-align: center;
                 }
-
+                
                 .myDiv3 {
                     border: 1px outset white;
                     background-color: grey;
                     text-align: center;
                 }
-
+                
                 .myDiv4 {
                     background-color: #535AFF;
                     color: white;
                 }
-
+                
                 .myDiv5 {
                     background-color: #535AFF;
                     color: white;
                 }
-
+                
                 .nameHeader {
                     display: inline;
                 }
-
+                
                 .regionHeader {
                     display: inline;
                 }
-
+                
                 .updateHeader {
                     display: block;
                 }
-
+                
                 .spacer {
                     height: 50px;
                     background-color: white;
                 }
-
+                
                 table {
                     font-family: arial, sans-serif;
                     border-collapse: collapse;
                     width: 100%;
                 }
-
+                
                 td,
                 th {
                     text-align: left;
                     padding: 8px;
                 }
-
+                
                 tr:first-child {
                     background-color: #030083;
                 }
-
+                
                 tr {
                     background-color: #D9D9D9;
                 }
