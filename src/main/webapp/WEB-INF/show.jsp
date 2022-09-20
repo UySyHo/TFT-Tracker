@@ -61,78 +61,36 @@
                     <table class="table table-bordered border-primary">
                         <thead class="traits">
                             <tr>
-                                <th class="trait">Trait</th>
-                                <th class="play">Plays</th>
-                                <th class="winner">Win%</th>
-                                <th class="traittop">Top%</th>
-                                <th class="traitchamp">Champion</th>
-                                <th class="traitplay">Plays</th>
-                                <th class="traitwin">Win%</th>
-                                <th class="traittops">Top%</th>
+                                <th class="placement">Placement</th>
+                                <th class="littleLegend">Companion</th>
+                                <th class="augments">Augments</th>
+                                <th class="trait">Traits</th>
+                                <th class="traitchamp">Units</th>
+                                <th class="otherPlayers">Played With</th>
                             </tr>
-                </div>
-                </thead>
-                <tr>
-                    <td class="trait">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="play">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="winner">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="traittop">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="traitchamp">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="traitplay">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="traitwin">
-                        <p>Ragewing</p>
-                    </td>
-                    <td class="traittops">
-                        <p>Ragewing</p>
-                    </td>
-                </tr>
-                </table>
-                </div>
+                        </thead>
 
+                        <c:forEach var="match" items="${listOfMatches}">
+                            <c:forEach var="participant" items="${match.info.participants}">
+                                <c:if test="${searchSummoner.puuid==participant.puuid}">
+                                    <tr>
+                                        <!-- Placement -->
+                                        <td>
+                                            <p>${participant.placement}</p>
+                                        </td>
 
-                <h1>${searchSummoner.name}</h1>
-                <h1>Level ${searchSummoner.summonerLevel}</h1>
-                <img src="https://ddragon.poro.gg/12.11.1/img/profileicon/${searchSummoner.profileIconId}.png" alt="" />
-                <p>This is ${getMatchById.metadata.match_id}</p>
-                <p>matchPuid ${getMatchByPuuid}</p>
-                <c:forEach var="match" items="${listOfMatches}">
-                    <tr>
-                        <td>
-                            <c:out value="${match.metadata.match_id}"></c:out>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <c:out value="${match.metadata.data_version}"></c:out>
-                        </td>
-                    </tr>
-                    <div>
-                        <c:forEach var="participant" items="${match.info.participants}">
-                            <c:forEach var="trait" items="${participant.traits}">
-                                <c:out value="${trait.name}"></c:out>
-                            </c:forEach>
-
-
-                            <c:forEach var="augment" items="${participant.augments}">
-                                <c:out value="${augment}"></c:out>
+                                        <!-- Traits -->
+                                        <td>
+                                            <c:forEach var="trait" items="${participant.traits}">
+                                                <p>${trait.name}</p>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
                         </c:forEach>
-                    </div>
-
-
-                </c:forEach>
+                    </table>
+                </div>
             </body>
 
             </html>
