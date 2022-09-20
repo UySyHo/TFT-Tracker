@@ -62,7 +62,7 @@ public class TftController {
 		String[] listOfMatchIds = riotApiService.getMatchIdsByPuuid(searchSummoner.getPuuid());
 		model.addAttribute("getMatchByPuuid", listOfMatchIds);
 		
-		for(int i = 0; i < listOfMatchIds.length; i++) {
+		for(int i = 0; i < 20; i++) {
 			TftMatch match = riotApiService.getMatchById(listOfMatchIds[i]);
 			listOfMatches.add(match);
 		}
