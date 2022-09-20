@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <!DOCTYPE html>
             <html>
 
             <head>
                 <link href="/css/style2.css" rel="stylesheet" />
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                    crossorigin="anonymous">
                 <meta charset="ISO-8859-1">
                 <title>Insert title here</title>
             </head>
@@ -30,7 +31,8 @@
                 <div class="summonerOverviewBox">
                     <div class="gutter"></div>
                     <div class="summonerBoxLeft">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/${searchSummoner.profileIconId}.png" alt="Zed" class="zed" height="100">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/${searchSummoner.profileIconId}.png"
+                            alt="Zed" class="zed" height="100">
                         <h1 class="nameHeader">${searchSummoner.name}</h1>
                         <div class="buttons">
                             <button class="update"> Update </button>
@@ -71,23 +73,51 @@
                         </thead>
 
                         <c:forEach var="match" items="${listOfMatches}">
-                            <c:forEach var="participant" items="${match.info.participants}">
-                                <c:if test="${searchSummoner.puuid==participant.puuid}">
-                                    <tr>
+                            <tr>
+                                <c:forEach var="participant" items="${match.info.participants}">
+
+                                    <c:if test="${searchSummoner.puuid==participant.puuid}">
+
                                         <!-- Placement -->
                                         <td>
                                             <p>${participant.placement}</p>
                                         </td>
 
+                                        <!-- Companion/ Legend-->
+                                        <td>
+                                            <p>${participant.companion.species}</p>
+                                            <p>${participant.companion.content_ID}</p>
+                                            <p>${participant.companion.skin_ID}</p>
+                                        </td>
+                                        <!-- Augments -->
+                                        <td>
+                                            <c:forEach var="augment" items="${participant.augments}">
+                                                <p>${augment}</p>
+                                            </c:forEach>
+                                        </td>
                                         <!-- Traits -->
                                         <td>
                                             <c:forEach var="trait" items="${participant.traits}">
                                                 <p>${trait.name}</p>
                                             </c:forEach>
                                         </td>
-                                    </tr>
-                                </c:if>
-                            </c:forEach>
+                                        <td>
+                                            <c:forEach var="unit" items="${participant.units}">
+                                                <p>${unit.character_id}</p>
+                                            </c:forEach>
+                                        </td>
+                                        <!-- Companion/ Legend-->
+
+                                    </c:if>
+
+
+                                </c:forEach>
+                                <td>
+                                    <c:forEach var="participant" items="${match.info.participants}">
+                                        <p>${participant.puuid}</p>
+                                    </c:forEach>
+                                </td>
+                            </tr>
                         </c:forEach>
                     </table>
                 </div>
